@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>John Uriel Cruz Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1a1e18;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(45deg, rgba(98,255,0,0.05), rgba(98,255,0,0.05) 2px, transparent 2px, transparent 20px);
+    z-index: -1;
+    animation: neonMove 20s linear infinite;
+}
+
+@keyframes neonMove {
+    0% { transform: translate(0,0); }
+    50% { transform: translate(50px,50px); }
+    100% { transform: translate(0,0); }
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1e18;
+    padding: 15px 0;
+    gap: 30px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid #62cb2c;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    padding: 8px 15px;
+    border: 2px solid #62cb2c;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+nav a:hover {
+    background-color: #62cb2c;
+    color: #1a1e18;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-right: 50px;
+    text-shadow: 0 0 8px #fff, 0 0 16px #f0f0f0;
+    animation: logoPulse 2.5s infinite alternate;
+}
+
+@keyframes logoPulse {
+    0% { text-shadow: 0 0 8px #fff, 0 0 16px #f0f0f0; }
+    50% { text-shadow: 0 0 12px #fff, 0 0 24px #f0f0f0; }
+    100% { text-shadow: 0 0 8px #fff, 0 0 16px #f0f0f0; }
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 100px;
+    font-weight: 700;
+    color: #62ff00;
+    text-shadow: 0 0 6px #62ff00, 0 0 12px #67f81d;
+    animation: heroGlow 2s infinite alternate;
+}
+
+@keyframes heroGlow {
+    0% { text-shadow: 0 0 6px #62ff00, 0 0 12px #67f81d; }
+    50% { text-shadow: 0 0 12px #62ff00, 0 0 24px #67f81d; }
+    100% { text-shadow: 0 0 6px #62ff00, 0 0 12px #67f81d; }
+}
+
+.hero-intro {
+    font-size: 18px;
+    font-style: italic;
+    color: #fff;
+    max-width: 700px;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+section {
+    padding: 100px 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+    position: relative;
+    z-index: 1;
+    border-left: 3px solid #62ff00;
+    border-right: 3px solid #62ff00;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section h2 {
+    color: #62ff00;
+    text-shadow: 0 0 10px #62ff00, 0 0 20px #67f81d;
+    display: inline-block;
+    position: relative;
+}
+
+section h2 i {
+    color: #62ff00;
+    text-shadow: 0 0 6px #62ff00, 0 0 12px #67f81d;
+    margin-right: 10px;
+    vertical-align: middle;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+section h2::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background-color: #62ff00;
+    margin: 10px auto 0;
+    border-radius: 2px;
+    box-shadow: 0 0 10px #62ff00, 0 0 20px #67f81d;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%,100% { transform: scaleX(1); opacity:1; }
+    50% { transform: scaleX(1.1); opacity:0.7; }
+}
+
+@keyframes iconFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #62ff0020, transparent 70%);
+    border-radius: 50%;
+    top: -100px;
+    left: -50px;
+    z-index: 0;
+    filter: blur(80px);
+    animation: blobMove 25s ease-in-out infinite alternate;
+    opacity: 0.3;
+}
+
+@keyframes blobMove {
+    0% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(50px,80px) scale(1.1); }
+    100% { transform: translate(-30px,50px) scale(0.9); }
+}
+
+.about-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #1a1e18;
+    border: 2px solid #62cb2c;
+    border-radius: 12px;
+    padding: 25px;
+    max-width: 900px;
+    margin: 40px auto;
+    gap: 30px;
+}
+
+.about-card img {
+    width: 180px;       
+    height: 180px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid #62cb2c;
+    box-shadow: 0 0 15px #62cb2c80;
+}
+
+.about-text {
+    flex: 1;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.tech-cards, .cert-cards, .webinar-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.tech-card, .cert-card, .webinar-card {
+    background: linear-gradient(145deg, #1a1e18, #262b25);
+    border: 2px solid #62cb2c;
+    border-radius: 16px;
+    width: 280px;
+    text-align: center;
+    color: #fff;
+    padding: 25px;
+    box-shadow: 0 0 10px #62cb2c40;
+    transition: all 0.4s ease;
+    animation: floatCard 6s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.tech-card:hover, .cert-card:hover, .webinar-card:hover {
+    transform: translateY(-10px);
+    border-color: #67f81d;
+    box-shadow: 0 0 20px #67f81d,0 0 40px #67f81d30;
+}
+
+.tech-card i, .cert-card i {
+    color: #62ff00;
+    margin-right: 8px;
+    text-shadow: 0 0 5px #62ff00,0 0 10px #67f81d;
+    display: inline-block;
+    animation: iconFloat 3s ease-in-out infinite;
+    transition: transform 0.3s;
+}
+
+.tech-card i:hover, .cert-card i:hover { transform: scale(1.2) rotate(10deg); }
+
+.tech-card h3, .cert-card p { color: #62ff00; text-shadow:0 0 6px #62ff00,0 0 12px #67f81d; }
+
+.cert-card img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid #62cb2c;
+    box-shadow: 0 0 15px #62cb2c80;
+    transition: all 0.3s ease;
+}
+
+.cert-card img:hover { 
+    box-shadow:0 0 25px #67f81d,0 0 50px #67f81d50; 
+}
+
+footer {
+    text-align:center;
+    padding:20px;
+    background-color:#1a1e18;
+    color:#fff;
+    border-top:2px solid #62cb2c;
+}
+
+/* LIGHTBOX */
+.lightbox {
+    display:none;
+    position:fixed;
+    z-index:200;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.85);
+    justify-content:center;
+    align-items:center;
+}
+
+.lightbox img { 
+    max-width:90%; 
+    max-height:80%; 
+    border-radius:12px; 
+    box-shadow: 0 0 50px #62ff00, 0 0 100px #67f81d;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.lightbox .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+    text-shadow: 0 0 10px #62ff00, 0 0 20px #67f81d;
+    transition: transform 0.3s;
+}
+
+.lightbox .close-btn:hover { transform: scale(1.2); }
+
+@keyframes glow {
+    0% { box-shadow: 0 0 50px #62ff00, 0 0 100px #67f81d; }
+    50% { box-shadow: 0 0 70px #62ff00, 0 0 140px #67f81d; }
+    100% { box-shadow: 0 0 50px #62ff00, 0 0 100px #67f81d; }
+}
+
+.lightbox.show { display:flex; }
+
+@media(max-width:900px){
+    .about-card{flex-direction:column;align-items:center;text-align:center;}
+    .about-card img{margin-bottom:20px;}
+    .tech-cards,.cert-cards,.webinar-cards{flex-direction:column;gap:20px;align-items:center;}
+    section::before{width:200px;height:200px;top:-50px;left:-20px;}
+}
+@media(max-width:500px){
+    .hero h1{font-size:50px;}
+    .hero-intro{font-size:16px;}
+    section h2{font-size:30px;}
+    .about-card img{width:120px;height:120px;}
+    .tech-card,.cert-card,.webinar-card{width:90%;}
+    .cert-card img{width:100px;height:70px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">YURI</div>
+    <a href="#about">ABOUT ME</a>
+    <a href="#tech">CODE ARSENAL</a>
+    <a href="#certifications">CERTIFICATIONS</a>
+    <a href="#webinars">WEBINARS</a>
+</nav>
+
+<div class="hero">
+    <h1>John Uriel Cruz</h1>
+    <p class="hero-intro">Welcome to my digital world! I craft sleek, functional websites that blend creativity and code. Dive in to explore my projects, skills, and journey as a passionate developer.</p>
+</div>
+
+<section id="about">
+    <h2><i class="fas fa-user"></i> About Me</h2>
+    <div class="about-card">
+        <img src="pogi.jpg" alt="John Uriel Cruz">
+        <div class="about-text">
+            <p>Hi! I'm John Uriel Cruz, a 3rd-year student at STI Malolos, and a passionate web developer. I love turning ideas into interactive websites and learning new technologies to create projects that leave a lasting impression. From coding smooth user experiences to experimenting with design, every project is a chance to innovate and grow.</p>
+        </div>
+    </div>
+</section>
+
+<section id="tech">
+    <h2><i class="fas fa-rocket"></i> Code Arsenal</h2>
+    <div class="tech-cards">
+        <div class="tech-card">
+            <h3><i class="fas fa-gamepad"></i> Game Development</h3>
+            <p><i class="fas fa-cogs"></i> Unity</p>
+            <p><i class="fab fa-js"></i> C#</p>
+        </div>
+        <div class="tech-card">
+            <h3><i class="fas fa-code"></i> Frontend</h3>
+            <p><i class="fab fa-html5"></i> HTML</p>
+            <p><i class="fab fa-css3-alt"></i> CSS</p>
+            <p><i class="fab fa-js-square"></i> JavaScript</p>
+        </div>
+        <div class="tech-card">
+            <h3><i class="fas fa-server"></i> Backend</h3>
+            <p><i class="fab fa-node-js"></i> JavaScript</p>
+            <p><i class="fas fa-code"></i> C#</p>
+            <p><i class="fab fa-python"></i> Python</p>
+        </div>
+    </div>
+</section>
+
+<section id="certifications">
+    <h2><i class="fas fa-certificate"></i> Certifications</h2>
+    <div class="cert-cards">
+        <div class="cert-card">
+            <a href="certificate1.jpg" class="cert-link">
+                <img src="certificate1.jpg" alt="Certification 1">
+            </a>
+            <p><i class="fas fa-certificate"></i> Certification 1</p>
+        </div>
+        <div class="cert-card">
+            <a href="certificate2.jpg" class="cert-link">
+                <img src="certificate2.jpg" alt="Certification 2">
+            </a>
+            <p><i class="fas fa-certificate"></i> Certification 2</p>
+        </div>
+    </div>
+</section>
+
+<section id="webinars">
+    <h2><i class="fas fa-calendar-alt"></i> Webinars & Events</h2>
+    <div class="webinar-cards">
+        <div class="webinar-card">
+            <h3>The Syntax Org: The First IT Congress</h3>
+            <p>A Quantum Leap Towards Excellence</p>
+            <p>An IT congress focused on testing frameworks and software engineering, attended by students from different schools.</p>
+            <p>📅 April 2023</p>
+        </div>
+        <div class="webinar-card">
+            <h3>Community Learning: FWD PEERS Web Development</h3>
+            <p>A community of Filipinos united in learning modern web development practices.</p>
+            <p>📅 September 2023</p>
+        </div>
+        <div class="webinar-card">
+            <h3>The Second IT Congress: SYNTAX Gaming Towards Excellence</h3>
+            <p>A gathering of the six biggest IT communities in the Philippines discussing the gaming industry in IT and leadership.</p>
+            <p>📅 April 2024</p>
+        </div>
+    </div>
+</section>
+
+<!-- LIGHTBOX with X button -->
+<div class="lightbox" id="lightbox">
+    <span class="close-btn">&times;</span>
+    <img src="" alt="Certificate">
+</div>
+
+<footer>
+    &copy; John Uriel Cruz Gwapings
+</footer>
+
+<script>
+const sections = document.querySelectorAll('section');
+function revealSections() {
+    const windowHeight = window.innerHeight;
+    sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if(top < windowHeight - 100) section.classList.add('show');
+    });
+}
+window.addEventListener('scroll', revealSections);
+window.addEventListener('load', revealSections);
+
+// LIGHTBOX
+const lightbox = document.getElementById('lightbox');
+const img = lightbox.querySelector('img');
+const closeBtn = lightbox.querySelector('.close-btn');
+
+document.querySelectorAll('.cert-link').forEach(link=>{
+    link.addEventListener('click', e=>{
+        e.preventDefault();
+        img.src = link.href;
+        lightbox.classList.add('show');
+    });
+});
+
+closeBtn.addEventListener('click', ()=>{
+    lightbox.classList.remove('show');
+    img.src = '';
+});
+
+// Optional: click outside image closes lightbox
+lightbox.addEventListener('click', e=>{
+    if(e.target === lightbox) {
+        lightbox.classList.remove('show');
+        img.src = '';
+    }
+});
+</script>
+
+</body>
+</html>
